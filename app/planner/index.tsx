@@ -34,7 +34,7 @@ type CountdownStatus = {
   distance: Duration;
 };
 
-export default function CounterScreen() {
+export default function PlannerScreen() {
   const { width } = useWindowDimensions();
   const confettiRef = useRef<any>();
   const [isLoading, setIsLoading] = useState(true);

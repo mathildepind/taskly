@@ -18,9 +18,9 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="counter"
+        name="planner"
         options={{
-          title: "Counter",
+          title: "Planner",
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             // <MaterialCommunityIcons name="counter" size={size} color={color} />

@@ -9,10 +9,10 @@ export default function Layout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "Counter",
+          title: "Planner",
           headerRight: () => {
             return (
-              <Link href="/counter/history" asChild>
+              <Link href="/planner/history" asChild>
                 <Pressable hitSlop={20}>
                   <MaterialCommunityIcons
                     name="history"
