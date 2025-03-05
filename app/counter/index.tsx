@@ -1,6 +1,12 @@
 import { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { theme } from "../theme";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { theme } from "../../theme";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
@@ -16,6 +22,11 @@ export default function IdeaScreen() {
 
   const reset = () => {
     setCount(0);
+  };
+
+  const setStart = (value: string) => {
+    const parsedValue = parseInt(value);
+    setCount(isNaN(parsedValue) ? 0 : parsedValue);
   };
 
   return (
@@ -34,30 +45,25 @@ export default function IdeaScreen() {
           name="counter"
           size={44}
           color={theme.colorBlack}
+          style={styles.iconButton}
         />
         <AntDesign
           name="minuscircle"
           size={30}
           color={theme.colorCerulean}
           onPress={decrement}
+          style={styles.iconButton}
         />
       </View>
-      {/* <View style={styles.buttonRow}>
-        <TouchableOpacity
-          style={styles.button}
-          activeOpacity={0.8}
-          onPress={increment}
-        >
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          activeOpacity={0.8}
-          onPress={decrement}
-        >
-          <Text style={styles.buttonText}>-</Text>
-        </TouchableOpacity>
-      </View> */}
+      <TextInput
+        placeholder="Set start count"
+        style={styles.textInput}
+        keyboardType="number-pad"
+        inputMode="numeric"
+        returnKeyType="done"
+        value={count.toString()}
+        onChangeText={setStart}
+      />
       <View>
         <TouchableOpacity
           style={styles.button}
@@ -96,9 +102,19 @@ const styles = StyleSheet.create({
   buttonRow: {
     flexDirection: "row",
     marginBottom: 24,
-    justifyContent: "space-evenly",
+    alignItems: "center",
   },
   iconButton: {
-    // marginHorizontal: 20,
+    marginHorizontal: 10,
+  },
+  textInput: {
+    borderColor: theme.colorLightGrey,
+    borderWidth: 2,
+    padding: 12,
+    marginHorizontal: 12,
+    marginBottom: 12,
+    fontSize: 18,
+    borderRadius: 50,
+    backgroundColor: theme.colorWhite,
   },
 });
